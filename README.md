@@ -1,23 +1,22 @@
 # ThreadsHub
 
-ThreadsHubは、Meta Threads APIを活用したソーシャルメディア管理ツールです。投稿の作成、予約投稿、インタラクション管理、統計分析などの機能を提供します。
+ThreadsHubは、Meta Threads APIを活用したソーシャルメディア管理プラットフォームです。このアプリケーションでは、投稿の作成・スケジュール・分析機能や、インタラクションの管理、キーワード監視などが可能です。
 
 ## 機能
 
-- Threadsアカウントとの連携
-- 投稿の作成、スケジュール管理
-- 投稿テンプレート機能
-- インタラクション（コメント、いいね、リポスト）の管理
-- キーワードモニタリング
-- 分析情報とレポート生成
+- **投稿管理**: テキスト投稿の作成、スケジュール、テンプレート管理
+- **インタラクション管理**: いいね、リプライ、リポスト、メンションの一元管理
+- **キーワード監視**: 特定のキーワードを含む投稿の監視
+- **分析ダッシュボード**: 投稿のパフォーマンス分析
 
 ## 技術スタック
 
 ### バックエンド
 - Node.js
 - Express
-- MongoDB
 - TypeScript
+- MongoDB (Mongoose)
+- JWT認証
 
 ### フロントエンド
 - Next.js
@@ -25,47 +24,62 @@ ThreadsHubは、Meta Threads APIを活用したソーシャルメディア管理
 - TypeScript
 - Tailwind CSS
 
-## セットアップ方法
+## インストール方法
 
-### 前提条件
-- Node.js (v14以上)
-- npm または yarn
+### 必要条件
+- Node.js 14.0以上
 - MongoDB
+- npm または yarn
 
-### インストール
+### セットアップ
 
-```bash
-# リポジトリのクローン
-git clone https://github.com/your-username/threads-hub.git
+1. リポジトリをクローン:
+```
+git clone https://github.com/fortesnow/threads-hub.git
 cd threads-hub
+```
 
-# 依存関係のインストール
-# バックエンド
+2. バックエンドの設定:
+```
 cd backend
 npm install
+cp .env.example .env
+# .envファイルを編集して適切な環境変数を設定してください
+npm run dev
+```
 
-# フロントエンド
+3. フロントエンドの設定:
+```
 cd ../frontend
 npm install
-```
-
-### 環境変数の設定
-`.env.example`ファイルをコピーして`.env`ファイルを作成し、必要な環境変数を設定してください。
-
-### 開発サーバーの起動
-
-```bash
-# バックエンド
-cd backend
-npm run dev
-
-# フロントエンド (別ターミナルで)
-cd frontend
 npm run dev
 ```
+
+## 環境変数
+
+### バックエンド (.env)
+```
+PORT=3001
+MONGODB_URI=mongodb://localhost:27017/threads-hub
+JWT_SECRET=your_jwt_secret_key
+THREADS_API_KEY=your_threads_api_key
+```
+
+### フロントエンド (.env.local)
+```
+NEXT_PUBLIC_API_URL=http://localhost:3001
+```
+
+## 使用方法
+
+1. ブラウザで `http://localhost:3000` にアクセス
+2. アカウントを作成またはログイン
+3. ダッシュボードから機能を利用開始
 
 ## ライセンス
+
 MIT
 
-## 貢献方法
-プルリクエストやイシューの報告は歓迎しています。大きな変更を加える場合は、まずイシューでディスカッションを開始してください。 
+## 作者
+
+Your Name 
